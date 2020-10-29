@@ -15,6 +15,7 @@ import WorkspaceDropdown from './dropdowns/workspace-dropdown';
 import { ACTIVITY_HOME, isInsomnia } from '../../common/constants';
 import ActivityToggle from './activity-toggle';
 import { isGrpcRequest } from '../../models/helpers/is-model';
+import GrpcRequestPane from './grpc-request-pane';
 
 type Props = {
   forceRefreshKey: string,
@@ -255,7 +256,7 @@ class WrapperDebug extends React.PureComponent<Props> {
     // activeRequest being truthy only needs to be checked for isGrpcRequest (for now)
     // The RequestPane and ResponsePane components already handle the case where activeRequest is null
     if (activeRequest && isGrpcRequest(activeRequest)) {
-      return null;
+      return <GrpcRequestPane activeRequest={activeRequest} />;
     }
 
     return (
